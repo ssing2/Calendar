@@ -647,23 +647,192 @@
 
         // Download functions
         function downloadPDF() {
-            // Simulate PDF download
-            console.log('Downloading PDF...');
-            // In real implementation, generate and download PDF
-            setTimeout(() => {
-                alert('PDF download started!');
-                closeOverlay();
-            }, 500);
+            console.log('Generating PDF...');
+            
+            try {
+                // Initialize jsPDF
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                // Get calendar data
+                const selectedMonth = document.getElementById('month').value;
+                const selectedYear = document.getElementById('year').value;
+                const selectedTheme = document.getElementById('theme').value;
+                
+                // Add title
+                doc.setFontSize(20);
+                doc.text(`${selectedMonth} ${selectedYear} Calendar`, 20, 30);
+                
+                // Add theme info
+                doc.setFontSize(12);
+                doc.text(`Theme: ${selectedTheme}`, 20, 45);
+                
+                // Generate calendar grid
+                generateCalendarPDF(doc, selectedMonth, selectedYear);
+                
+                // Add events if any
+                if (calendarEvents.length > 0) {
+                    addEventsToPDF(doc);
+                }
+                
+                // Download the PDF
+                const fileName = `${selectedMonth}-${selectedYear}-calendar.pdf`;
+                doc.save(fileName);
+                
+                // Show success message
+                setTimeout(() => {
+                    alert(`PDF calendar downloaded successfully!\nFile: ${fileName}`);
+                    closeOverlay();
+                }, 500);
+                
+            } catch (error) {
+                console.error('PDF generation error:', error);
+                alert('Error generating PDF. Please try again.');
+            }
         }
 
         function downloadExcel() {
-            // Simulate Excel download
-            console.log('Downloading Excel...');
-            // In real implementation, generate and download Excel file
-            setTimeout(() => {
-                alert('Excel download started!');
-                closeOverlay();
-            }, 500);
+            console.log('Generating Excel...');
+            
+            try {
+                // Get calendar data
+                const selectedMonth = document.getElementById('month').value;
+                const selectedYear = document.getElementById('year').value;
+                
+                // Generate calendar data
+                const calendarData = generateCalendarData(selectedMonth, selectedYear);
+                
+                // Create workbook
+                const wb = XLSX.utils.book_new();
+                
+                // Create calendar worksheet
+                const calendarWs = XLSX.utils.aoa_to_sheet(calendarData);
+                XLSX.utils.book_append_sheet(wb, calendarWs, "Calendar");
+                
+                // Create events worksheet if events exist
+                if (calendarEvents.length > 0) {
+                    const eventsData = generateEventsData();
+                    const eventsWs = XLSX.utils.aoa_to_sheet(eventsData);
+                    XLSX.utils.book_append_sheet(wb, eventsWs, "Events");
+                }
+                
+                // Download the Excel file
+                const fileName = `${selectedMonth}-${selectedYear}-calendar.xlsx`;
+                XLSX.writeFile(wb, fileName);
+                
+                // Show success message
+                setTimeout(() => {
+                    alert(`Excel calendar downloaded successfully!\nFile: ${fileName}`);
+                    closeOverlay();
+                }, 500);
+                
+            } catch (error) {
+                console.error('Excel generation error:', error);
+                alert('Error generating Excel file. Please try again.');
+            }
+        }
+
+        // Helper function to generate calendar for PDF
+        function generateCalendarPDF(doc, month, year) {
+            const monthIndex = new Date(Date.parse(month + " 1, 2000")).getMonth();
+            const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+            const firstDay = new Date(year, monthIndex, 1).getDay();
+            
+            // Calendar grid settings
+            const startX = 20;
+            const startY = 60;
+            const cellWidth = 25;
+            const cellHeight = 20;
+            
+            // Draw days of week header
+            const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            doc.setFontSize(10);
+            for (let i = 0; i < 7; i++) {
+                doc.text(daysOfWeek[i], startX + (i * cellWidth) + 2, startY - 5);
+            }
+            
+            // Draw calendar grid
+            let currentDay = 1;
+            for (let week = 0; week < 6; week++) {
+                for (let day = 0; day < 7; day++) {
+                    const x = startX + (day * cellWidth);
+                    const y = startY + (week * cellHeight);
+                    
+                    // Draw cell border
+                    doc.rect(x, y, cellWidth, cellHeight);
+                    
+                    // Add day number
+                    if ((week === 0 && day >= firstDay) || (week > 0 && currentDay <= daysInMonth)) {
+                        doc.text(currentDay.toString(), x + 2, y + 12);
+                        currentDay++;
+                    }
+                }
+                if (currentDay > daysInMonth) break;
+            }
+        }
+        
+        // Helper function to add events to PDF
+        function addEventsToPDF(doc) {
+            doc.setFontSize(14);
+            doc.text('Events:', 20, 200);
+            
+            doc.setFontSize(10);
+            let yPos = 215;
+            calendarEvents.forEach((event, index) => {
+                if (yPos > 270) { // Start new page if needed
+                    doc.addPage();
+                    yPos = 20;
+                }
+                doc.text(`${event.date}: ${event.title}`, 20, yPos);
+                yPos += 15;
+            });
+        }
+        
+        // Helper function to generate calendar data for Excel
+        function generateCalendarData(month, year) {
+            const monthIndex = new Date(Date.parse(month + " 1, 2000")).getMonth();
+            const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+            const firstDay = new Date(year, monthIndex, 1).getDay();
+            
+            // Create header row
+            const data = [
+                [`${month} ${year} Calendar`],
+                [], // Empty row
+                ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+            ];
+            
+            // Generate calendar weeks
+            let currentDay = 1;
+            for (let week = 0; week < 6; week++) {
+                const weekRow = [];
+                for (let day = 0; day < 7; day++) {
+                    if ((week === 0 && day >= firstDay) || (week > 0 && currentDay <= daysInMonth)) {
+                        weekRow.push(currentDay);
+                        currentDay++;
+                    } else {
+                        weekRow.push('');
+                    }
+                }
+                data.push(weekRow);
+                if (currentDay > daysInMonth) break;
+            }
+            
+            return data;
+        }
+        
+        // Helper function to generate events data for Excel
+        function generateEventsData() {
+            const data = [
+                ['Events List'],
+                [],
+                ['Date', 'Event Title', 'Description']
+            ];
+            
+            calendarEvents.forEach(event => {
+                data.push([event.date, event.title, event.description || '']);
+            });
+            
+            return data;
         }
 
         function closeOverlay() {

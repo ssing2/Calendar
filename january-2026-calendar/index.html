@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -37,6 +37,10 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/custom.css">
+    
+    <!-- PDF and Excel Generation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -79,7 +83,7 @@
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
                     <a href="../" class="text-2xl font-bold text-primary-600">
-                        📅 Calendar2026.com
+                        馃搮 Calendar2026.com
                     </a>
                 </div>
                 
@@ -118,9 +122,11 @@
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                     <a href="../create/?month=january" class="bg-primary-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors shadow-lg">
                         Customize January Calendar
-                    </a>
-                    <button onclick="downloadJanuaryCalendar()" class="border-2 border-primary-600 text-primary-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-50 transition-colors">
-                        Download PDF
+                    </a>                    <button onclick="downloadJanuaryCalendar('pdf')" class="border-2 border-primary-600 text-primary-600 px-6 py-4 rounded-lg text-lg font-semibold hover:bg-primary-50 transition-colors">
+                        馃搫 Download PDF
+                    </button>
+                    <button onclick="downloadJanuaryCalendar('excel')" class="border-2 border-green-600 text-green-600 px-6 py-4 rounded-lg text-lg font-semibold hover:bg-green-50 transition-colors">
+                        馃搳 Download Excel
                     </button>
                 </div>
 
@@ -333,27 +339,27 @@
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">January Planning Tips</h3>
                     <ul class="space-y-3 text-gray-600">
                         <li class="flex items-start">
-                            <span class="text-primary-600 mr-2 mt-1">✓</span>
+                            <span class="text-primary-600 mr-2 mt-1">鉁?/span>
                             Set New Year resolutions and track progress
                         </li>
                         <li class="flex items-start">
-                            <span class="text-primary-600 mr-2 mt-1">✓</span>
+                            <span class="text-primary-600 mr-2 mt-1">鉁?/span>
                             Plan your year ahead with major goals and milestones
                         </li>
                         <li class="flex items-start">
-                            <span class="text-primary-600 mr-2 mt-1">✓</span>
+                            <span class="text-primary-600 mr-2 mt-1">鉁?/span>
                             Schedule regular fitness and health checkups
                         </li>
                         <li class="flex items-start">
-                            <span class="text-primary-600 mr-2 mt-1">✓</span>
+                            <span class="text-primary-600 mr-2 mt-1">鉁?/span>
                             Organize important documents for tax season
                         </li>
                         <li class="flex items-start">
-                            <span class="text-primary-600 mr-2 mt-1">✓</span>
+                            <span class="text-primary-600 mr-2 mt-1">鉁?/span>
                             Plan winter activities and indoor hobbies
                         </li>
                         <li class="flex items-start">
-                            <span class="text-primary-600 mr-2 mt-1">✓</span>
+                            <span class="text-primary-600 mr-2 mt-1">鉁?/span>
                             Set budgets and financial goals for the year
                         </li>
                     </ul>
@@ -443,27 +449,27 @@
                         <h3 class="text-xl font-semibold mb-4">January 2026 Features</h3>
                         <ul class="space-y-2 text-gray-600">
                             <li class="flex items-start">
-                                <span class="text-primary-600 mr-2">•</span>
+                                <span class="text-primary-600 mr-2">鈥?/span>
                                 Customizable personal events and birthdays
                             </li>
                             <li class="flex items-start">
-                                <span class="text-primary-600 mr-2">•</span>
+                                <span class="text-primary-600 mr-2">鈥?/span>
                                 US federal holidays clearly marked
                             </li>
                             <li class="flex items-start">
-                                <span class="text-primary-600 mr-2">•</span>
+                                <span class="text-primary-600 mr-2">鈥?/span>
                                 Weekend highlighting for easy planning
                             </li>
                             <li class="flex items-start">
-                                <span class="text-primary-600 mr-2">•</span>
+                                <span class="text-primary-600 mr-2">鈥?/span>
                                 Multiple export formats (PDF, Excel)
                             </li>
                             <li class="flex items-start">
-                                <span class="text-primary-600 mr-2">•</span>
+                                <span class="text-primary-600 mr-2">鈥?/span>
                                 Print-ready for all standard paper sizes
                             </li>
                             <li class="flex items-start">
-                                <span class="text-primary-600 mr-2">•</span>
+                                <span class="text-primary-600 mr-2">鈥?/span>
                                 Professional themes for any environment
                             </li>
                         </ul>
@@ -476,12 +482,12 @@
                         People are already planning for January 2026 with these popular searches:
                     </p>
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-                        <div>• January 2026 calendar printable</div>
-                        <div>• New Year 2026 planning</div>
-                        <div>• January calendar with holidays</div>
-                        <div>• 2026 calendar templates</div>
-                        <div>• MLK Day 2026 calendar</div>
-                        <div>• January planner 2026</div>
+                        <div>鈥?January 2026 calendar printable</div>
+                        <div>鈥?New Year 2026 planning</div>
+                        <div>鈥?January calendar with holidays</div>
+                        <div>鈥?2026 calendar templates</div>
+                        <div>鈥?MLK Day 2026 calendar</div>
+                        <div>鈥?January planner 2026</div>
                     </div>
                 </div>
             </div>
@@ -493,7 +499,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <div class="text-xl font-bold mb-4">📅 Calendar2026.com</div>
+                    <div class="text-xl font-bold mb-4">馃搮 Calendar2026.com</div>
                     <p class="text-gray-400 text-sm">
                         Free printable calendar templates for 2026. Plan ahead with style and organization.
                     </p>
@@ -541,12 +547,115 @@
             // Show loading overlay
             showLoadingOverlay();
             
-            // Simulate calendar generation
+            // Generate PDF calendar
             setTimeout(() => {
-                hideLoadingOverlay();
-                // In real implementation, this would trigger actual download
-                alert('January 2026 calendar download started!');
-            }, 3000);
+                try {
+                    generateJanuaryPDF();
+                    hideLoadingOverlay();
+                } catch (error) {
+                    console.error('Calendar generation error:', error);
+                    hideLoadingOverlay();
+                    alert('Error generating calendar. Please try again.');
+                }
+            }, 2000);
+        }
+        
+        function generateJanuaryPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Set title
+            doc.setFontSize(24);
+            doc.text('January 2026 Calendar', 20, 30);
+            
+            // Add subtitle
+            doc.setFontSize(12);
+            doc.text('New Year, New Beginnings', 20, 45);
+            
+            // Calendar grid settings
+            const startX = 20;
+            const startY = 70;
+            const cellWidth = 25;
+            const cellHeight = 20;
+            
+            // Days of week
+            const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            
+            for (let i = 0; i < 7; i++) {
+                doc.text(daysOfWeek[i], startX + (i * cellWidth) + 8, startY - 5);
+            }
+            
+            // January 2026 starts on Thursday (4th day)
+            const firstDay = 4; // 0 = Sunday, 4 = Thursday
+            const daysInMonth = 31;
+            
+            doc.setFont(undefined, 'normal');
+            
+            // Draw calendar grid
+            let currentDay = 1;
+            for (let week = 0; week < 6; week++) {
+                for (let day = 0; day < 7; day++) {
+                    const x = startX + (day * cellWidth);
+                    const y = startY + (week * cellHeight);
+                    
+                    // Draw cell border
+                    doc.rect(x, y, cellWidth, cellHeight);
+                    
+                    // Add day number
+                    if ((week === 0 && day >= firstDay) || (week > 0 && currentDay <= daysInMonth)) {
+                        doc.text(currentDay.toString(), x + 8, y + 12);
+                        
+                        // Highlight New Year's Day
+                        if (currentDay === 1) {
+                            doc.setFillColor(255, 200, 200);
+                            doc.rect(x, y, cellWidth, cellHeight, 'F');
+                            doc.setFont(undefined, 'bold');
+                            doc.text(currentDay.toString(), x + 8, y + 12);
+                            doc.setFont(undefined, 'normal');
+                        }
+                        
+                        currentDay++;
+                    }
+                }
+                if (currentDay > daysInMonth) break;
+            }
+            
+            // Add important dates
+            doc.setFontSize(14);
+            doc.setFont(undefined, 'bold');
+            doc.text('Important January 2026 Dates:', 20, 210);
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            const importantDates = [
+                'January 1: New Year\'s Day (Federal Holiday)',
+                'January 20: Martin Luther King Jr. Day (US)',
+                'January 26: Australia Day (Australia)',
+                'January 31: Last day of January'
+            ];
+            
+            let yPos = 225;
+            importantDates.forEach(date => {
+                doc.text(`鈥?${date}`, 25, yPos);
+                yPos += 12;
+            });
+            
+            // Add footer
+            doc.setFontSize(8);
+            doc.text('Generated by Calendar2026.com', 20, 280);
+            doc.text('Visit calendar2026.com for more calendar templates', 20, 285);
+            
+            // Download the PDF
+            doc.save('January-2026-Calendar.pdf');
+            
+            // Track download
+            if (window.affiliateTracker) {
+                window.affiliateTracker.trackDownload('January 2026 PDF');
+            }
+            
+            alert('January 2026 calendar downloaded successfully!');
         }
         
         function showLoadingOverlay() {
@@ -555,7 +664,7 @@
             overlay.className = 'loading-overlay';
             overlay.innerHTML = `
                 <div class="loading-content">
-                    <div class="text-4xl mb-4">📅</div>
+                    <div class="text-4xl mb-4">馃搮</div>
                     <h3 class="text-2xl font-bold mb-4">Generating Your Calendar...</h3>
                     <div class="progress-bar mb-4">
                         <div class="progress-fill" style="width: 0%"></div>
@@ -591,3 +700,4 @@
     </script>
 </body>
 </html>
+

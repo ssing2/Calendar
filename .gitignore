@@ -97,3 +97,4 @@ temp/
 *-backup.*
 *-fixed.*
 *-old.*
+.vercel

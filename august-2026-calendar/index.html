@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -45,7 +45,7 @@
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
                     <a href="../" class="text-2xl font-bold text-primary-600">
-                        📅 Calendar2026.com
+                        馃搮 Calendar2026.com
                     </a>
                 </div>
                 
@@ -73,9 +73,11 @@
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                     <a href="../create/?month=august" class="bg-primary-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors shadow-lg">
                         Customize August Calendar
-                    </a>
-                    <button onclick="downloadAugustCalendar()" class="border-2 border-primary-600 text-primary-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-50 transition-colors">
-                        Download PDF
+                    </a>                    <button onclick="downloadAugustCalendar('pdf')" class="border-2 border-primary-600 text-primary-600 px-6 py-4 rounded-lg text-lg font-semibold hover:bg-primary-50 transition-colors">
+                        馃搫 Download PDF
+                    </button>
+                    <button onclick="downloadAugustCalendar('excel')" class="border-2 border-green-600 text-green-600 px-6 py-4 rounded-lg text-lg font-semibold hover:bg-green-50 transition-colors">
+                        馃搳 Download Excel
                     </button>
                 </div>
 
@@ -140,27 +142,27 @@
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">August Planning Tips</h3>
                     <ul class="space-y-3 text-gray-600">
                         <li class="flex items-start">
-                            <span class="text-primary-600 mr-2 mt-1">🎒</span>
+                            <span class="text-primary-600 mr-2 mt-1">馃帓</span>
                             Back-to-school shopping and supply preparation
                         </li>
                         <li class="flex items-start">
-                            <span class="text-primary-600 mr-2 mt-1">📚</span>
+                            <span class="text-primary-600 mr-2 mt-1">馃摎</span>
                             School schedule and routine establishment
                         </li>
                         <li class="flex items-start">
-                            <span class="text-primary-600 mr-2 mt-1">🏖️</span>
+                            <span class="text-primary-600 mr-2 mt-1">馃彇锔?/span>
                             Final summer vacation and beach trips
                         </li>
                         <li class="flex items-start">
-                            <span class="text-primary-600 mr-2 mt-1">🍑</span>
+                            <span class="text-primary-600 mr-2 mt-1">馃崙</span>
                             Late summer harvest and preserving activities
                         </li>
                         <li class="flex items-start">
-                            <span class="text-primary-600 mr-2 mt-1">🏃‍♂️</span>
+                            <span class="text-primary-600 mr-2 mt-1">馃弮鈥嶁檪锔?/span>
                             Fall sports registration and preparation
                         </li>
                         <li class="flex items-start">
-                            <span class="text-primary-600 mr-2 mt-1">🌻</span>
+                            <span class="text-primary-600 mr-2 mt-1">馃尰</span>
                             Late summer garden maintenance and planning
                         </li>
                     </ul>
@@ -189,7 +191,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <div class="text-xl font-bold mb-4">📅 Calendar2026.com</div>
+                    <div class="text-xl font-bold mb-4">馃搮 Calendar2026.com</div>
                     <p class="text-gray-400 text-sm">
                         Free printable calendar templates for 2026. Plan ahead with style and organization.
                     </p>
@@ -234,7 +236,7 @@
             overlay.className = 'loading-overlay';
             overlay.innerHTML = `
                 <div class="loading-content">
-                    <div class="text-4xl mb-4">🎒</div>
+                    <div class="text-4xl mb-4">馃帓</div>
                     <h3 class="text-2xl font-bold mb-4">Generating Your August Calendar...</h3>
                     <div class="progress-bar mb-4">
                         <div class="progress-fill" style="width: 0%"></div>
@@ -255,3 +257,5 @@
     </script>
 </body>
 </html>
+
+

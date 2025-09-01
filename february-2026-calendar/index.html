@@ -96,8 +96,11 @@
                     <a href="../create/?month=february" class="bg-primary-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors shadow-lg">
                         Customize February Calendar
                     </a>
-                    <button onclick="downloadFebruaryCalendar()" class="border-2 border-primary-600 text-primary-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-50 transition-colors">
-                        Download PDF
+                    <button onclick="downloadFebruaryCalendar('pdf')" class="border-2 border-primary-600 text-primary-600 px-6 py-4 rounded-lg text-lg font-semibold hover:bg-primary-50 transition-colors">
+                        📄 Download PDF
+                    </button>
+                    <button onclick="downloadFebruaryCalendar('excel')" class="border-2 border-green-600 text-green-600 px-6 py-4 rounded-lg text-lg font-semibold hover:bg-green-50 transition-colors">
+                        📊 Download Excel
                     </button>
                 </div>
 
@@ -296,16 +299,141 @@
 
     <!-- Scripts -->
     <script src="../js/main.js"></script>
+    <!-- PDF/Excel Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script>
-        function downloadFebruaryCalendar() {
-            // Show loading overlay
+        async function downloadFebruaryCalendar(format = 'pdf') {
             showLoadingOverlay();
             
-            // Simulate calendar generation
-            setTimeout(() => {
+            // Wait for libraries to load
+            let attempts = 0;
+            while ((typeof window.jspdf === 'undefined' || typeof XLSX === 'undefined') && attempts < 50) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
+            }
+            
+            try {
+                if (format === 'pdf') {
+                    await generateFebruaryPDF();
+                } else if (format === 'excel') {
+                    await generateFebruaryExcel();
+                }
+            } catch (error) {
+                console.error('Generation error:', error);
+                alert('Error generating calendar: ' + error.message);
+            } finally {
                 hideLoadingOverlay();
-                alert('February 2026 calendar download started!');
-            }, 3000);
+            }
+        }
+        
+        async function generateFebruaryPDF() {
+            if (typeof window.jspdf === 'undefined') {
+                throw new Error('PDF library not loaded');
+            }
+            
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Set title
+            doc.setFontSize(24);
+            doc.text('February 2026 Calendar', 20, 30);
+            
+            // Calendar grid settings
+            const startX = 20;
+            const startY = 70;
+            const cellWidth = 25;
+            const cellHeight = 20;
+            
+            // Days of week header
+            const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            
+            for (let i = 0; i < 7; i++) {
+                doc.text(daysOfWeek[i], startX + (i * cellWidth) + 8, startY - 5);
+            }
+            
+            doc.setFont(undefined, 'normal');
+            
+            // February 2026 starts on Sunday (0th day)
+            const firstDay = 0;
+            const daysInMonth = 28;
+            
+            // Draw calendar grid
+            let currentDay = 1;
+            for (let week = 0; week < 5; week++) {
+                for (let day = 0; day < 7; day++) {
+                    const x = startX + (day * cellWidth);
+                    const y = startY + (week * cellHeight);
+                    
+                    // Draw cell border
+                    doc.rect(x, y, cellWidth, cellHeight);
+                    
+                    // Add day number
+                    if ((week === 0 && day >= firstDay) || (week > 0 && currentDay <= daysInMonth)) {
+                        doc.text(currentDay.toString(), x + 8, y + 12);
+                        currentDay++;
+                    }
+                }
+                if (currentDay > daysInMonth) break;
+            }
+            
+            // Add holidays
+            doc.setFontSize(14);
+            doc.setFont(undefined, 'bold');
+            doc.text('February 2026 Holidays:', 20, 200);
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            doc.text('• Valentine\'s Day (Feb 14)', 25, 215);
+            doc.text('• Presidents Day (Feb 16)', 25, 227);
+            
+            // Add footer
+            doc.setFontSize(8);
+            doc.text('Generated by Calendar2026.com', 20, 280);
+            
+            // Download the PDF
+            doc.save('February-2026-Calendar.pdf');
+            alert('February 2026 PDF calendar downloaded successfully!');
+        }
+        
+        async function generateFebruaryExcel() {
+            if (typeof XLSX === 'undefined') {
+                throw new Error('Excel library not loaded');
+            }
+            
+            // Create calendar data
+            const calendarData = [
+                ['February 2026 Calendar'],
+                [],
+                ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+            ];
+            
+            // February 2026 data
+            const weeks = [
+                [1, 2, 3, 4, 5, 6, 7],
+                [8, 9, 10, 11, 12, 13, 14],
+                [15, 16, 17, 18, 19, 20, 21],
+                [22, 23, 24, 25, 26, 27, 28]
+            ];
+            
+            weeks.forEach(week => calendarData.push(week));
+            
+            // Add holidays
+            calendarData.push([]);
+            calendarData.push(['February 2026 Holidays:']);
+            calendarData.push(['Valentine\'s Day (Feb 14)']);
+            calendarData.push(['Presidents Day (Feb 16)']);
+            
+            // Create workbook
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.aoa_to_sheet(calendarData);
+            XLSX.utils.book_append_sheet(wb, ws, 'February');
+            
+            // Download the Excel file
+            XLSX.writeFile(wb, 'February-2026-Calendar.xlsx');
+            alert('February 2026 Excel calendar downloaded successfully!');
         }
         
         function showLoadingOverlay() {
