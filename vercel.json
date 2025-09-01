@@ -1,18 +1,7 @@
 {
   "version": 2,
   "name": "calendar2025-2026",
-  "alias": ["calendar2026.com"],
   "public": true,
-  "github": {
-    "silent": true
-  },
-  "functions": {},
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -64,12 +53,6 @@
       "source": "/test.html",
       "destination": "/",
       "permanent": false
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/index.html"
     }
   ],
   "cleanUrls": true,
