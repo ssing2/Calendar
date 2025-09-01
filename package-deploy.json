@@ -1,0 +1,33 @@
+{
+  "name": "calendar-2025-2026",
+  "version": "1.0.0",
+  "description": "Free printable Calendar 2025-2026 templates with customizable events and holidays",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8080",
+    "dev": "python -m http.server 3000",
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "vercel --prod",
+    "upload": ".\\upload-to-github.bat"
+  },
+  "keywords": [
+    "calendar",
+    "2025",
+    "2026",
+    "printable",
+    "templates",
+    "free",
+    "planning",
+    "holidays"
+  ],
+  "author": "Calendar2026.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/calendar-2025-2026"
+  },
+  "homepage": "https://calendar2026.com",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,410 @@
+{
+  "2026": {
+    "US": {
+      "name": "United States",
+      "holidays": [
+        {
+          "name": "New Year's Day",
+          "date": "2026-01-01",
+          "type": "federal",
+          "description": "Federal holiday marking the beginning of the new year"
+        },
+        {
+          "name": "Martin Luther King Jr. Day",
+          "date": "2026-01-19",
+          "type": "federal",
+          "description": "Federal holiday honoring civil rights leader Martin Luther King Jr."
+        },
+        {
+          "name": "Presidents' Day",
+          "date": "2026-02-16",
+          "type": "federal",
+          "description": "Federal holiday honoring all U.S. presidents"
+        },
+        {
+          "name": "Memorial Day",
+          "date": "2026-05-25",
+          "type": "federal",
+          "description": "Federal holiday honoring military personnel who died in service"
+        },
+        {
+          "name": "Independence Day",
+          "date": "2026-07-04",
+          "type": "federal",
+          "description": "Federal holiday celebrating U.S. independence"
+        },
+        {
+          "name": "Labor Day",
+          "date": "2026-09-07",
+          "type": "federal",
+          "description": "Federal holiday celebrating the contributions of workers"
+        },
+        {
+          "name": "Columbus Day",
+          "date": "2026-10-12",
+          "type": "federal",
+          "description": "Federal holiday commemorating Christopher Columbus"
+        },
+        {
+          "name": "Veterans Day",
+          "date": "2026-11-11",
+          "type": "federal",
+          "description": "Federal holiday honoring military veterans"
+        },
+        {
+          "name": "Thanksgiving Day",
+          "date": "2026-11-26",
+          "type": "federal",
+          "description": "Federal holiday for giving thanks"
+        },
+        {
+          "name": "Christmas Day",
+          "date": "2026-12-25",
+          "type": "federal",
+          "description": "Federal holiday celebrating the birth of Jesus Christ"
+        },
+        {
+          "name": "Valentine's Day",
+          "date": "2026-02-14",
+          "type": "observance",
+          "description": "Day of love and romance"
+        },
+        {
+          "name": "Easter Sunday",
+          "date": "2026-04-05",
+          "type": "observance",
+          "description": "Christian holiday celebrating the resurrection of Jesus"
+        },
+        {
+          "name": "Mother's Day",
+          "date": "2026-05-10",
+          "type": "observance",
+          "description": "Day honoring mothers and motherhood"
+        },
+        {
+          "name": "Father's Day",
+          "date": "2026-06-21",
+          "type": "observance",
+          "description": "Day honoring fathers and fatherhood"
+        },
+        {
+          "name": "Halloween",
+          "date": "2026-10-31",
+          "type": "observance",
+          "description": "Traditional holiday with costumes and trick-or-treating"
+        }
+      ]
+    },
+    "CA": {
+      "name": "Canada",
+      "holidays": [
+        {
+          "name": "New Year's Day",
+          "date": "2026-01-01",
+          "type": "federal",
+          "description": "Federal holiday marking the beginning of the new year"
+        },
+        {
+          "name": "Family Day",
+          "date": "2026-02-16",
+          "type": "provincial",
+          "description": "Provincial holiday in most provinces"
+        },
+        {
+          "name": "Good Friday",
+          "date": "2026-04-03",
+          "type": "federal",
+          "description": "Christian holiday commemorating the crucifixion of Jesus"
+        },
+        {
+          "name": "Easter Monday",
+          "date": "2026-04-06",
+          "type": "federal",
+          "description": "Federal holiday in some provinces"
+        },
+        {
+          "name": "Victoria Day",
+          "date": "2026-05-18",
+          "type": "federal",
+          "description": "Federal holiday celebrating Queen Victoria's birthday"
+        },
+        {
+          "name": "Canada Day",
+          "date": "2026-07-01",
+          "type": "federal",
+          "description": "National holiday celebrating Canadian confederation"
+        },
+        {
+          "name": "Civic Holiday",
+          "date": "2026-08-03",
+          "type": "provincial",
+          "description": "Provincial holiday in most provinces"
+        },
+        {
+          "name": "Labour Day",
+          "date": "2026-09-07",
+          "type": "federal",
+          "description": "Federal holiday celebrating workers"
+        },
+        {
+          "name": "Thanksgiving Day",
+          "date": "2026-10-12",
+          "type": "federal",
+          "description": "Federal holiday for giving thanks"
+        },
+        {
+          "name": "Remembrance Day",
+          "date": "2026-11-11",
+          "type": "federal",
+          "description": "Federal holiday honoring military service members"
+        },
+        {
+          "name": "Christmas Day",
+          "date": "2026-12-25",
+          "type": "federal",
+          "description": "Federal holiday celebrating the birth of Jesus Christ"
+        },
+        {
+          "name": "Boxing Day",
+          "date": "2026-12-26",
+          "type": "federal",
+          "description": "Federal holiday celebrated the day after Christmas"
+        }
+      ]
+    },
+    "UK": {
+      "name": "United Kingdom",
+      "holidays": [
+        {
+          "name": "New Year's Day",
+          "date": "2026-01-01",
+          "type": "bank",
+          "description": "Bank holiday marking the beginning of the new year"
+        },
+        {
+          "name": "Good Friday",
+          "date": "2026-04-03",
+          "type": "bank",
+          "description": "Christian holiday commemorating the crucifixion of Jesus"
+        },
+        {
+          "name": "Easter Monday",
+          "date": "2026-04-06",
+          "type": "bank",
+          "description": "Bank holiday celebrated the day after Easter"
+        },
+        {
+          "name": "Early May Bank Holiday",
+          "date": "2026-05-04",
+          "type": "bank",
+          "description": "Bank holiday on the first Monday in May"
+        },
+        {
+          "name": "Spring Bank Holiday",
+          "date": "2026-05-25",
+          "type": "bank",
+          "description": "Bank holiday on the last Monday in May"
+        },
+        {
+          "name": "Summer Bank Holiday",
+          "date": "2026-08-31",
+          "type": "bank",
+          "description": "Bank holiday on the last Monday in August"
+        },
+        {
+          "name": "Christmas Day",
+          "date": "2026-12-25",
+          "type": "bank",
+          "description": "Bank holiday celebrating the birth of Jesus Christ"
+        },
+        {
+          "name": "Boxing Day",
+          "date": "2026-12-26",
+          "type": "bank",
+          "description": "Bank holiday celebrated the day after Christmas"
+        },
+        {
+          "name": "St. Patrick's Day",
+          "date": "2026-03-17",
+          "type": "observance",
+          "description": "Cultural celebration of Irish heritage (Northern Ireland bank holiday)"
+        },
+        {
+          "name": "St. George's Day",
+          "date": "2026-04-23",
+          "type": "observance",
+          "description": "Patron saint day of England"
+        },
+        {
+          "name": "Burns Night",
+          "date": "2026-01-25",
+          "type": "observance",
+          "description": "Scottish celebration of poet Robert Burns"
+        }
+      ]
+    },
+    "AU": {
+      "name": "Australia",
+      "holidays": [
+        {
+          "name": "New Year's Day",
+          "date": "2026-01-01",
+          "type": "national",
+          "description": "National public holiday marking the beginning of the new year"
+        },
+        {
+          "name": "Australia Day",
+          "date": "2026-01-26",
+          "type": "national",
+          "description": "National day of Australia"
+        },
+        {
+          "name": "Good Friday",
+          "date": "2026-04-03",
+          "type": "national",
+          "description": "Christian holiday commemorating the crucifixion of Jesus"
+        },
+        {
+          "name": "Easter Saturday",
+          "date": "2026-04-04",
+          "type": "national",
+          "description": "Day before Easter Sunday"
+        },
+        {
+          "name": "Easter Monday",
+          "date": "2026-04-06",
+          "type": "national",
+          "description": "Day after Easter Sunday"
+        },
+        {
+          "name": "Anzac Day",
+          "date": "2026-04-25",
+          "type": "national",
+          "description": "Day of remembrance for Australian and New Zealand Army Corps"
+        },
+        {
+          "name": "Queen's Birthday",
+          "date": "2026-06-08",
+          "type": "national",
+          "description": "Celebration of the monarch's birthday (varies by state)"
+        },
+        {
+          "name": "Christmas Day",
+          "date": "2026-12-25",
+          "type": "national",
+          "description": "National public holiday celebrating the birth of Jesus Christ"
+        },
+        {
+          "name": "Boxing Day",
+          "date": "2026-12-26",
+          "type": "national",
+          "description": "National public holiday celebrated the day after Christmas"
+        },
+        {
+          "name": "Labour Day",
+          "date": "2026-03-02",
+          "type": "state",
+          "description": "State holiday celebrating workers (varies by state)"
+        }
+      ]
+    },
+    "IN": {
+      "name": "India",
+      "holidays": [
+        {
+          "name": "Republic Day",
+          "date": "2026-01-26",
+          "type": "national",
+          "description": "National holiday commemorating the adoption of the Constitution"
+        },
+        {
+          "name": "Independence Day",
+          "date": "2026-08-15",
+          "type": "national",
+          "description": "National holiday celebrating independence from British rule"
+        },
+        {
+          "name": "Gandhi Jayanti",
+          "date": "2026-10-02",
+          "type": "national",
+          "description": "National holiday celebrating Mahatma Gandhi's birthday"
+        },
+        {
+          "name": "Diwali",
+          "date": "2026-11-01",
+          "type": "festival",
+          "description": "Festival of lights, major Hindu celebration"
+        },
+        {
+          "name": "Holi",
+          "date": "2026-03-13",
+          "type": "festival",
+          "description": "Festival of colors, Hindu spring celebration"
+        },
+        {
+          "name": "Dussehra",
+          "date": "2026-10-12",
+          "type": "festival",
+          "description": "Hindu festival celebrating the victory of good over evil"
+        },
+        {
+          "name": "Eid al-Fitr",
+          "date": "2026-04-20",
+          "type": "festival",
+          "description": "Islamic festival marking the end of Ramadan (date approximate)"
+        },
+        {
+          "name": "Eid al-Adha",
+          "date": "2026-06-28",
+          "type": "festival",
+          "description": "Islamic festival of sacrifice (date approximate)"
+        },
+        {
+          "name": "Christmas Day",
+          "date": "2026-12-25",
+          "type": "national",
+          "description": "National holiday celebrating the birth of Jesus Christ"
+        },
+        {
+          "name": "Good Friday",
+          "date": "2026-04-03",
+          "type": "national",
+          "description": "Christian holiday commemorating the crucifixion of Jesus"
+        },
+        {
+          "name": "Ram Navami",
+          "date": "2026-04-08",
+          "type": "festival",
+          "description": "Hindu festival celebrating the birth of Lord Rama"
+        },
+        {
+          "name": "Krishna Janmashtami",
+          "date": "2026-08-25",
+          "type": "festival",
+          "description": "Hindu festival celebrating the birth of Lord Krishna"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2024-09-01",
+    "sources": [
+      "Official government websites",
+      "Religious calendar calculations",
+      "Cultural tradition references"
+    ],
+    "notes": {
+      "religious_holidays": "Islamic and some Hindu holidays are approximate as they depend on lunar calendar",
+      "regional_variations": "Some holidays may vary by state/province/region within countries",
+      "observance_types": {
+        "federal": "Official government holiday",
+        "bank": "Bank holiday (UK)",
+        "national": "National public holiday",
+        "provincial": "Provincial/state level holiday",
+        "observance": "Cultural observance, not necessarily a day off",
+        "festival": "Religious or cultural festival"
+      }
+    }
+  }
+}

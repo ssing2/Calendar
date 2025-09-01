@@ -1,0 +1,49 @@
+# Development files
+node_modules/
+.git/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Documentation and project files
+*.md
+README.md
+PROJECT-COMPLETION-REPORT.md
+TESTING-REPORT.md
+LOGO-GUIDE.md
+discus.md
+project-design.md
+reauirement.md
+
+# Development/test files
+test.html
+index-fixed.html
+logo-selection.html
+package.json
+
+# Data files (if not needed for production)
+calendar2026.csv
+calendar-2026-site/
+
+# Components (not needed as standalone files)
+components/
+
+# Logs and temporary files
+*.log
+.tmp/
+temp/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025-2026 Calendar - Free Printable Calendar Templates | Calendar2026.com</title>
+    <meta name="description" content="Download free printable 2025-2026 calendar templates. Customize with holidays, birthdays, and personal events. Available in PDF and Excel formats for all major countries.">
+    <meta name="keywords" content="2025 calendar, 2026 calendar, calendar 2025-2026, printable calendar, free calendar templates, 2025 2026 calendar with holidays">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="2025-2026 Calendar - Free Printable Calendar Templates">
+    <meta property="og:description" content="Create personalized 2025-2026 calendars with holidays, birthdays, and custom events. Free PDF and Excel downloads.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calendar2026.com">
+    
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Inline CSS for Logo (ensuring it loads) -->
+    <style>
+        /* Calendar2025-2026 Logo Styles */
+        .calendar-logo {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .calendar-logo:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-main {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1f2937;
+            line-height: 1;
+            margin: 0;
+        }
+
+        .logo-year {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1f2937;
+            line-height: 1;
+            margin: 0;
+            margin-top: -0.2rem;
+        }
+
+        .logo-tagline {
+            font-size: 0.75rem;
+            color: #6b7280;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            margin-top: 0.25rem;
+            text-transform: uppercase;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .logo-icon {
+                font-size: 1.5rem;
+                margin-right: 0.4rem;
+            }
+            
+            .logo-main {
+                font-size: 1.4rem;
+            }
+            
+            .logo-year {
+                font-size: 0.9rem;
+            }
+            
+            .logo-tagline {
+                font-size: 0.65rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-tagline {
+                display: none;
+            }
+        }
+
+        /* Header specific logo styles */
+        .header-logo .logo-icon {
+            font-size: 2.5rem;
+        }
+
+        .header-logo .logo-main {
+            font-size: 2rem;
+        }
+
+        .header-logo .logo-year {
+            font-size: 1.25rem;
+        }
+
+        /* Additional custom styles */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "2025-2026 Calendar Generator",
+        "description": "Free printable 2025-2026 calendar templates with customizable events and holidays",
+        "url": "https://calendar2026.com",
+        "applicationCategory": "Productivity",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+    <!-- Loading indicator -->
+    <div id="loading" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+        <div class="text-center">
+            <div class="text-4xl mb-4">🗓️</div>
+            <div class="text-xl font-bold text-gray-900">Loading Calendar 2025-2026...</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="/" class="calendar-logo header-logo">
+                        <span class="logo-icon">🗓️</span>
+                        <div class="logo-text">
+                            <div class="logo-main">Calendar</div>
+                            <div class="logo-year">2025-2026</div>
+                            <div class="logo-tagline">Your Planning Partner</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#calendars" class="text-gray-700 hover:text-primary-600 transition-colors">Monthly Calendars</a>
+                    <a href="#holidays" class="text-gray-700 hover:text-primary-600 transition-colors">Holiday Calendars</a>
+                    <a href="#features" class="text-gray-700 hover:text-primary-600 transition-colors">Features</a>
+                    <a href="create/" class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">Create Calendar</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 py-3 space-y-2">
+                <a href="#calendars" class="block text-gray-700 hover:text-primary-600 transition-colors py-2">Monthly Calendars</a>
+                <a href="#holidays" class="block text-gray-700 hover:text-primary-600 transition-colors py-2">Holiday Calendars</a>
+                <a href="#features" class="block text-gray-700 hover:text-primary-600 transition-colors py-2">Features</a>
+                <a href="create/" class="block bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors text-center">Create Calendar</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                    Free <span class="text-primary-600">2025-2026 Calendar</span> Templates
+                </h1>
+                <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                    Create personalized calendars with holidays, birthdays, and custom events. 
+                    Perfect for planning your 2025-2026 with style and organization.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                    <a href="create/" class="bg-primary-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors shadow-lg">
+                        Create Your Calendar Now
+                    </a>
+                    <a href="#calendars" class="border-2 border-primary-600 text-primary-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-50 transition-colors">
+                        Browse Templates
+                    </a>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                        <div class="text-3xl mb-4">📅</div>
+                        <h3 class="text-lg font-semibold mb-2">Multiple Formats</h3>
+                        <p class="text-gray-600 text-sm">PDF, Excel, and printable formats</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                        <div class="text-3xl mb-4">🌍</div>
+                        <h3 class="text-lg font-semibold mb-2">Global Holidays</h3>
+                        <p class="text-gray-600 text-sm">Holidays for 5+ countries included</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                        <div class="text-3xl mb-4">🎨</div>
+                        <h3 class="text-lg font-semibold mb-2">Custom Themes</h3>
+                        <p class="text-gray-600 text-sm">5 professional color themes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Why Choose Our 2025-2026 Calendar Templates?
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Professional, customizable, and completely free calendar solutions for your planning needs.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">📊</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Professional Design</h3>
+                    <p class="text-gray-600">Clean, modern layouts perfect for home, office, or business use.</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🛠️</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Easy Customization</h3>
+                    <p class="text-gray-600">Add personal events, birthdays, and important dates effortlessly.</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">💾</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Multiple Formats</h3>
+                    <p class="text-gray-600">Download in PDF for printing or Excel for digital planning.</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🌏</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Global Holidays</h3>
+                    <p class="text-gray-600">Pre-loaded with holidays for US, UK, Canada, Australia, and India.</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">📱</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Mobile Friendly</h3>
+                    <p class="text-gray-600">Create and view calendars on any device, anywhere.</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🎨</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Color Themes</h3>
+                    <p class="text-gray-600">Choose from 5 beautiful color schemes to match your style.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monthly Calendars Section -->
+    <section id="calendars" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Popular 2025-2026 Calendar Templates
+                </h2>
+                <p class="text-xl text-gray-600">Browse our collection of monthly calendar templates</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="january-2026-calendar/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border card-hover">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">❄️</div>
+                        <h3 class="text-lg font-semibold mb-2">January 2026</h3>
+                        <p class="text-gray-600 text-sm">New Year, fresh starts</p>
+                    </div>
+                </a>
+
+                <a href="february-2026-calendar/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border card-hover">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">💝</div>
+                        <h3 class="text-lg font-semibold mb-2">February 2026</h3>
+                        <p class="text-gray-600 text-sm">Love and Valentine's Day</p>
+                    </div>
+                </a>
+
+                <a href="march-2026-calendar/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border card-hover">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🌸</div>
+                        <h3 class="text-lg font-semibold mb-2">March 2026</h3>
+                        <p class="text-gray-600 text-sm">Spring awakening</p>
+                    </div>
+                </a>
+
+                <a href="april-2026-calendar/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border card-hover">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🌼</div>
+                        <h3 class="text-lg font-semibold mb-2">April 2026</h3>
+                        <p class="text-gray-600 text-sm">Easter celebrations</p>
+                    </div>
+                </a>
+
+                <a href="may-2026-calendar/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border card-hover">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🌺</div>
+                        <h3 class="text-lg font-semibold mb-2">May 2026</h3>
+                        <p class="text-gray-600 text-sm">Mother's Day special</p>
+                    </div>
+                </a>
+
+                <a href="june-2026-calendar/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border card-hover">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">☀️</div>
+                        <h3 class="text-lg font-semibold mb-2">June 2026</h3>
+                        <p class="text-gray-600 text-sm">Summer begins</p>
+                    </div>
+                </a>
+
+                <a href="july-2026-calendar/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border card-hover">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🎆</div>
+                        <h3 class="text-lg font-semibold mb-2">July 2026</h3>
+                        <p class="text-gray-600 text-sm">Independence Day</p>
+                    </div>
+                </a>
+
+                <a href="august-2026-calendar/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border card-hover">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🏖️</div>
+                        <h3 class="text-lg font-semibold mb-2">August 2026</h3>
+                        <p class="text-gray-600 text-sm">Summer vacation</p>
+                    </div>
+                </a>
+
+                <a href="september-2026-calendar/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border card-hover">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🍂</div>
+                        <h3 class="text-lg font-semibold mb-2">September 2026</h3>
+                        <p class="text-gray-600 text-sm">Back to school</p>
+                    </div>
+                </a>
+
+                <a href="october-2026-calendar/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border card-hover">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🎃</div>
+                        <h3 class="text-lg font-semibold mb-2">October 2026</h3>
+                        <p class="text-gray-600 text-sm">Halloween season</p>
+                    </div>
+                </a>
+
+                <a href="november-2026-calendar/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border card-hover">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🦃</div>
+                        <h3 class="text-lg font-semibold mb-2">November 2026</h3>
+                        <p class="text-gray-600 text-sm">Thanksgiving time</p>
+                    </div>
+                </a>
+
+                <a href="december-2026-calendar/" class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border card-hover">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🎄</div>
+                        <h3 class="text-lg font-semibold mb-2">December 2026</h3>
+                        <p class="text-gray-600 text-sm">Holiday celebrations</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary-600">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                Ready to Create Your Perfect Calendar?
+            </h2>
+            <p class="text-xl text-primary-100 mb-8">
+                Start planning your 2025-2026 today with our easy-to-use calendar generator.
+            </p>
+            <a href="create/" class="bg-white text-primary-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
+                Create Calendar Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="calendar-logo mb-4">
+                        <span class="logo-icon text-primary-400">🗓️</span>
+                        <div class="logo-text">
+                            <div class="logo-main text-white">Calendar</div>
+                            <div class="logo-year text-primary-400">2025-2026</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Your trusted partner for planning and organizing. Create beautiful, 
+                        customizable calendars for personal and professional use.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="create/" class="hover:text-primary-400 transition-colors">Create Calendar</a></li>
+                        <li><a href="#calendars" class="hover:text-primary-400 transition-colors">Monthly Templates</a></li>
+                        <li><a href="#features" class="hover:text-primary-400 transition-colors">Features</a></li>
+                        <li><a href="logo-selection.html" class="hover:text-primary-400 transition-colors">Brand Guide</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 Calendar2026.com. All rights reserved. Made with ❤️ for better planning.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hide loading indicator when page is ready
+        window.addEventListener('load', function() {
+            const loading = document.getElementById('loading');
+            if (loading) {
+                loading.style.opacity = '0';
+                setTimeout(() => loading.remove(), 300);
+            }
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add some debug info
+        console.log('Calendar 2025-2026 - Page loaded successfully');
+        console.log('Current URL:', window.location.href);
+        console.log('TailwindCSS loaded:', typeof tailwind !== 'undefined' ? 'Yes' : 'No');
+    </script>
+</body>
+</html>

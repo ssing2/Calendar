@@ -1,0 +1,118 @@
+/* Calendar2025-2026 Logo Styles */
+.calendar-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.calendar-logo:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logo-main {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1;
+    margin: 0;
+}
+
+.logo-year {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1;
+    margin: 0;
+    margin-top: -0.2rem;
+}
+
+.logo-tagline {
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    margin-top: 0.25rem;
+    text-transform: uppercase;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .logo-icon {
+        font-size: 1.5rem;
+        margin-right: 0.4rem;
+    }
+    
+    .logo-main {
+        font-size: 1.4rem;
+    }
+    
+    .logo-year {
+        font-size: 0.9rem;
+    }
+    
+    .logo-tagline {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-icon {
+        font-size: 1.3rem;
+        margin-right: 0.3rem;
+    }
+    
+    .logo-main {
+        font-size: 1.2rem;
+    }
+    
+    .logo-year {
+        font-size: 0.8rem;
+    }
+    
+    .logo-tagline {
+        display: none;
+    }
+}
+
+/* Header specific logo styles */
+.header-logo .logo-icon {
+    font-size: 2.5rem;
+}
+
+.header-logo .logo-main {
+    font-size: 2rem;
+}
+
+.header-logo .logo-year {
+    font-size: 1.25rem;
+}
+
+/* Footer logo styles */
+.footer-logo .logo-icon {
+    font-size: 1.5rem;
+}
+
+.footer-logo .logo-main {
+    font-size: 1.3rem;
+}
+
+.footer-logo .logo-year {
+    font-size: 0.9rem;
+}
+
+.footer-logo .logo-tagline {
+    color: #9ca3af;
+}

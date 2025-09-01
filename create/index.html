@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Custom 2026 Calendar - Free Calendar Generator | Calendar2026.com</title>
+    <meta name="description" content="Create personalized 2026 calendars with custom events, birthdays, holidays, and themes. Free calendar generator with PDF and Excel export options.">
+    <meta name="keywords" content="calendar generator, custom calendar 2026, personalized calendar, calendar maker, printable calendar creator">
+    
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+    
+    <!-- PDF Generation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <!-- Excel Export Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="../" class="text-2xl font-bold text-primary-600">
+                        📅 Calendar2026.com
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../#calendars" class="text-gray-700 hover:text-primary-600 transition-colors">Monthly Calendars</a>
+                    <a href="../#holidays" class="text-gray-700 hover:text-primary-600 transition-colors">Holiday Calendars</a>
+                    <a href="../" class="text-gray-700 hover:text-primary-600 transition-colors">Back to Home</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Create Your Perfect <span class="text-primary-600">2026 Calendar</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Customize every detail to create a calendar that perfectly fits your planning needs
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Configuration Panel -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-sm border p-6">
+                    <form id="calendar-form" class="space-y-8">
+                        <!-- Step 1: Calendar Type -->
+                        <div class="calendar-step" data-step="1">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Step 1: Choose Calendar Type</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <label class="calendar-option">
+                                    <input type="radio" name="calendar-type" value="year" class="sr-only">
+                                    <div class="border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-primary-500 transition-colors">
+                                        <div class="text-3xl mb-2">📅</div>
+                                        <h3 class="font-semibold text-lg mb-2">Full Year 2026</h3>
+                                        <p class="text-gray-600 text-sm">Complete 12-month calendar view</p>
+                                    </div>
+                                </label>
+
+                                <label class="calendar-option">
+                                    <input type="radio" name="calendar-type" value="month" class="sr-only" checked>
+                                    <div class="border-2 border-primary-500 bg-primary-50 rounded-lg p-6 cursor-pointer transition-colors">
+                                        <div class="text-3xl mb-2">📄</div>
+                                        <h3 class="font-semibold text-lg mb-2">Single Month</h3>
+                                        <p class="text-gray-600 text-sm">Focus on one month at a time</p>
+                                    </div>
+                                </label>
+
+                                <label class="calendar-option">
+                                    <input type="radio" name="calendar-type" value="academic" class="sr-only">
+                                    <div class="border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-primary-500 transition-colors">
+                                        <div class="text-3xl mb-2">🎓</div>
+                                        <h3 class="font-semibold text-lg mb-2">Academic Year</h3>
+                                        <p class="text-gray-600 text-sm">2025-2026 school year calendar</p>
+                                    </div>
+                                </label>
+
+                                <label class="calendar-option">
+                                    <input type="radio" name="calendar-type" value="quarterly" class="sr-only">
+                                    <div class="border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-primary-500 transition-colors">
+                                        <div class="text-3xl mb-2">📊</div>
+                                        <h3 class="font-semibold text-lg mb-2">Quarterly View</h3>
+                                        <p class="text-gray-600 text-sm">3-month periods for business planning</p>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- Month Selector (for single month) -->
+                            <div id="month-selector" class="mt-6">
+                                <label class="form-label">Select Month</label>
+                                <select name="selected-month" class="form-input form-select">
+                                    <option value="01">January 2026</option>
+                                    <option value="02">February 2026</option>
+                                    <option value="03">March 2026</option>
+                                    <option value="04">April 2026</option>
+                                    <option value="05">May 2026</option>
+                                    <option value="06">June 2026</option>
+                                    <option value="07">July 2026</option>
+                                    <option value="08">August 2026</option>
+                                    <option value="09">September 2026</option>
+                                    <option value="10">October 2026</option>
+                                    <option value="11">November 2026</option>
+                                    <option value="12">December 2026</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Country & Holidays -->
+                        <div class="calendar-step" data-step="2">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Step 2: Country & Holidays</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="form-label">Select Country</label>
+                                    <select name="country" class="form-input form-select">
+                                        <option value="US">🇺🇸 United States</option>
+                                        <option value="CA">🇨🇦 Canada</option>
+                                        <option value="UK">🇬🇧 United Kingdom</option>
+                                        <option value="AU">🇦🇺 Australia</option>
+                                        <option value="IN">🇮🇳 India</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="form-label">Holiday Types</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="holiday-types" value="federal" checked class="mr-2">
+                                            <span>Federal/National Holidays</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="holiday-types" value="religious" class="mr-2">
+                                            <span>Religious Observances</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="holiday-types" value="cultural" class="mr-2">
+                                            <span>Cultural Celebrations</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Theme Selection -->
+                        <div class="calendar-step" data-step="3">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Step 3: Choose Theme</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <label class="theme-option">
+                                    <input type="radio" name="theme" value="classic-blue" class="sr-only" checked>
+                                    <div class="border-2 border-primary-500 rounded-lg p-4 cursor-pointer">
+                                        <div class="theme-preview classic-blue mb-3"></div>
+                                        <h3 class="font-semibold">Classic Blue</h3>
+                                        <p class="text-sm text-gray-600">Professional and timeless</p>
+                                    </div>
+                                </label>
+
+                                <label class="theme-option">
+                                    <input type="radio" name="theme" value="modern-gray" class="sr-only">
+                                    <div class="border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-gray-400">
+                                        <div class="theme-preview modern-gray mb-3"></div>
+                                        <h3 class="font-semibold">Modern Gray</h3>
+                                        <p class="text-sm text-gray-600">Clean and minimalist</p>
+                                    </div>
+                                </label>
+
+                                <label class="theme-option">
+                                    <input type="radio" name="theme" value="spring-green" class="sr-only">
+                                    <div class="border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-green-400">
+                                        <div class="theme-preview spring-green mb-3"></div>
+                                        <h3 class="font-semibold">Spring Green</h3>
+                                        <p class="text-sm text-gray-600">Fresh and natural</p>
+                                    </div>
+                                </label>
+
+                                <label class="theme-option">
+                                    <input type="radio" name="theme" value="autumn-orange" class="sr-only">
+                                    <div class="border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-orange-400">
+                                        <div class="theme-preview autumn-orange mb-3"></div>
+                                        <h3 class="font-semibold">Autumn Orange</h3>
+                                        <p class="text-sm text-gray-600">Warm and energetic</p>
+                                    </div>
+                                </label>
+
+                                <label class="theme-option">
+                                    <input type="radio" name="theme" value="professional-black" class="sr-only">
+                                    <div class="border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-gray-600">
+                                        <div class="theme-preview professional-black mb-3"></div>
+                                        <h3 class="font-semibold">Professional Black</h3>
+                                        <p class="text-sm text-gray-600">Elegant and sophisticated</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Custom Events -->
+                        <div class="calendar-step" data-step="4">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Step 4: Add Personal Events (0/20)</h2>
+                            
+                            <div class="mb-6">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                                    <div>
+                                        <label class="form-label">Event Title</label>
+                                        <input type="text" id="event-title" class="form-input" placeholder="e.g., Mom's Birthday">
+                                    </div>
+                                    <div>
+                                        <label class="form-label">Date</label>
+                                        <input type="date" id="event-date" class="form-input" min="2026-01-01" max="2026-12-31">
+                                    </div>
+                                    <div>
+                                        <label class="form-label">Event Type</label>
+                                        <select id="event-type" class="form-input form-select">
+                                            <option value="birthday">🎂 Birthday</option>
+                                            <option value="anniversary">💍 Anniversary</option>
+                                            <option value="meeting">📅 Meeting</option>
+                                            <option value="vacation">✈️ Vacation</option>
+                                            <option value="reminder">⏰ Reminder</option>
+                                            <option value="appointment">🏥 Appointment</option>
+                                            <option value="other">📝 Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center gap-4 mb-4">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="birthday-reminder" class="mr-2">
+                                        <span class="text-sm">Add 7-day birthday reminder</span>
+                                    </label>
+                                    <button type="button" onclick="addEvent()" class="btn btn-primary">Add Event</button>
+                                </div>
+                            </div>
+
+                            <div id="events-list" class="space-y-2">
+                                <!-- Events will be added here dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Generate Button -->
+                        <div class="text-center pt-8 border-t">
+                            <button type="button" onclick="generateCalendar()" class="bg-primary-600 text-white px-12 py-4 rounded-lg text-xl font-semibold hover:bg-primary-700 transition-colors shadow-lg">
+                                Generate My Calendar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Preview Panel -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-sm border p-6 sticky top-24">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Calendar Preview</h3>
+                    
+                    <div id="calendar-preview" class="border rounded-lg overflow-hidden">
+                        <div class="bg-primary-600 text-white p-3 text-center font-semibold">
+                            January 2026
+                        </div>
+                        <div class="p-4">
+                            <div class="grid grid-cols-7 gap-1 text-xs text-center mb-2">
+                                <div class="font-semibold">S</div>
+                                <div class="font-semibold">M</div>
+                                <div class="font-semibold">T</div>
+                                <div class="font-semibold">W</div>
+                                <div class="font-semibold">T</div>
+                                <div class="font-semibold">F</div>
+                                <div class="font-semibold">S</div>
+                            </div>
+                            <div class="grid grid-cols-7 gap-1 text-xs">
+                                <!-- Mini calendar preview -->
+                                <div class="p-1 text-gray-400">28</div>
+                                <div class="p-1 text-gray-400">29</div>
+                                <div class="p-1 text-gray-400">30</div>
+                                <div class="p-1 bg-primary-100 text-primary-800 rounded">1</div>
+                                <div class="p-1">2</div>
+                                <div class="p-1">3</div>
+                                <div class="p-1">4</div>
+                                <div class="p-1">5</div>
+                                <div class="p-1">6</div>
+                                <div class="p-1">7</div>
+                                <div class="p-1">8</div>
+                                <div class="p-1">9</div>
+                                <div class="p-1">10</div>
+                                <div class="p-1">11</div>
+                                <div class="p-1">12</div>
+                                <div class="p-1">13</div>
+                                <div class="p-1">14</div>
+                                <div class="p-1">15</div>
+                                <div class="p-1">16</div>
+                                <div class="p-1">17</div>
+                                <div class="p-1">18</div>
+                                <div class="p-1 bg-primary-100 text-primary-800 rounded">19</div>
+                                <div class="p-1">20</div>
+                                <div class="p-1">21</div>
+                                <div class="p-1">22</div>
+                                <div class="p-1">23</div>
+                                <div class="p-1">24</div>
+                                <div class="p-1">25</div>
+                                <div class="p-1">26</div>
+                                <div class="p-1">27</div>
+                                <div class="p-1">28</div>
+                                <div class="p-1">29</div>
+                                <div class="p-1">30</div>
+                                <div class="p-1">31</div>
+                                <div class="p-1 text-gray-400">1</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <h4 class="font-semibold mb-3">Current Settings</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Type:</span>
+                                <span id="preview-type">Single Month</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Month:</span>
+                                <span id="preview-month">January 2026</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Country:</span>
+                                <span id="preview-country">🇺🇸 United States</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Theme:</span>
+                                <span id="preview-theme">Classic Blue</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Events:</span>
+                                <span id="preview-events">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Affiliate Recommendation -->
+                    <div class="mt-8 p-4 bg-blue-50 rounded-lg">
+                        <h4 class="font-semibold text-sm mb-2">💡 Enhance Your Planning</h4>
+                        <p class="text-xs text-gray-600 mb-3">Pair your digital calendar with a premium planner for the ultimate organization system.</p>
+                        <a href="#" class="text-xs text-primary-600 hover:text-primary-800 affiliate-link" data-product="business-planner">
+                            View Recommended Planners →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/affiliate-tracker.js"></script>
+    <script src="../js/calendar-generator.js"></script>
+    
+    <script>
+        // Calendar Generation Logic
+        let calendarEvents = [];
+        const maxEvents = 20;
+
+        // Add event functionality
+        function addEvent() {
+            if (calendarEvents.length >= maxEvents) {
+                alert(`Maximum ${maxEvents} events allowed`);
+                return;
+            }
+
+            const title = document.getElementById('event-title').value.trim();
+            const date = document.getElementById('event-date').value;
+            const type = document.getElementById('event-type').value;
+            const birthdayReminder = document.getElementById('birthday-reminder').checked;
+
+            if (!title || !date) {
+                alert('Please enter both event title and date');
+                return;
+            }
+
+            const event = {
+                id: Date.now(),
+                title,
+                date,
+                type,
+                birthdayReminder: type === 'birthday' && birthdayReminder
+            };
+
+            calendarEvents.push(event);
+            updateEventsList();
+            updatePreview();
+            clearEventForm();
+        }
+
+        // Update events list display
+        function updateEventsList() {
+            const container = document.getElementById('events-list');
+            const header = document.querySelector('[data-step="4"] h2');
+            
+            header.textContent = `Step 4: Add Personal Events (${calendarEvents.length}/${maxEvents})`;
+            
+            container.innerHTML = calendarEvents.map(event => `
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-lg">${getEventIcon(event.type)}</span>
+                        <div>
+                            <div class="font-medium">${event.title}</div>
+                            <div class="text-sm text-gray-600">${formatDate(event.date)}</div>
+                            ${event.birthdayReminder ? '<div class="text-xs text-primary-600">📅 7-day reminder included</div>' : ''}
+                        </div>
+                    </div>
+                    <button onclick="removeEvent(${event.id})" class="text-red-500 hover:text-red-700">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Remove event
+        function removeEvent(eventId) {
+            calendarEvents = calendarEvents.filter(event => event.id !== eventId);
+            updateEventsList();
+            updatePreview();
+        }
+
+        // Get event icon
+        function getEventIcon(type) {
+            const icons = {
+                birthday: '🎂',
+                anniversary: '💍',
+                meeting: '📅',
+                vacation: '✈️',
+                reminder: '⏰',
+                appointment: '🏥',
+                other: '📝'
+            };
+            return icons[type] || '📝';
+        }
+
+        // Format date for display
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        // Clear event form
+        function clearEventForm() {
+            document.getElementById('event-title').value = '';
+            document.getElementById('event-date').value = '';
+            document.getElementById('event-type').value = 'birthday';
+            document.getElementById('birthday-reminder').checked = false;
+        }
+
+        // Update preview
+        function updatePreview() {
+            const form = document.getElementById('calendar-form');
+            const formData = new FormData(form);
+            
+            document.getElementById('preview-type') = formData.get('calendar-type') === 'month' ? 'Single Month' : 'Full Year';
+            document.getElementById('preview-month').textContent = getMonthName(formData.get('selected-month'));
+            document.getElementById('preview-country').textContent = getCountryName(formData.get('country'));
+            document.getElementById('preview-theme').textContent = getThemeName(formData.get('theme'));
+            document.getElementById('preview-events').textContent = calendarEvents.length;
+        }
+
+        // Helper functions
+        function getMonthName(monthNum) {
+            const months = [
+                'January 2026', 'February 2026', 'March 2026', 'April 2026',
+                'May 2026', 'June 2026', 'July 2026', 'August 2026',
+                'September 2026', 'October 2026', 'November 2026', 'December 2026'
+            ];
+            return months[parseInt(monthNum) - 1] || 'January 2026';
+        }
+
+        function getCountryName(countryCode) {
+            const countries = {
+                'US': '🇺🇸 United States',
+                'CA': '🇨🇦 Canada',
+                'UK': '🇬🇧 United Kingdom',
+                'AU': '🇦🇺 Australia',
+                'IN': '🇮🇳 India'
+            };
+            return countries[countryCode] || '🇺🇸 United States';
+        }
+
+        function getThemeName(themeCode) {
+            const themes = {
+                'classic-blue': 'Classic Blue',
+                'modern-gray': 'Modern Gray',
+                'spring-green': 'Spring Green',
+                'autumn-orange': 'Autumn Orange',
+                'professional-black': 'Professional Black'
+            };
+            return themes[themeCode] || 'Classic Blue';
+        }
+
+        // Generate calendar
+        function generateCalendar() {
+            const form = document.getElementById('calendar-form');
+            const formData = new FormData(form);
+            
+            const calendarConfig = {
+                type: formData.get('calendar-type'),
+                month: formData.get('selected-month'),
+                country: formData.get('country'),
+                theme: formData.get('theme'),
+                holidays: formData.getAll('holiday-types'),
+                events: calendarEvents
+            };
+
+            // Show loading overlay with ads
+            showGenerationProcess(calendarConfig);
+        }
+
+        // Show generation process with ads
+        function showGenerationProcess(config) {
+            const overlay = document.createElement('div');
+            overlay.className = 'loading-overlay';
+            overlay.innerHTML = `
+                <div class="loading-content">
+                    <div class="text-4xl mb-4">📅</div>
+                    <h3 class="text-2xl font-bold mb-4">Creating Your Perfect Calendar...</h3>
+                    <div class="progress-bar mb-6">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <p id="progress-text" class="text-gray-600 mb-6">Initializing calendar generator...</p>
+                    
+                    <!-- Google Ads Space -->
+                    <div class="bg-white border-2 border-dashed border-gray-300 p-8 rounded-lg mb-4 max-w-md mx-auto">
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500 mb-2">Advertisement</p>
+                            <div class="bg-gray-100 h-32 flex items-center justify-center rounded">
+                                <p class="text-gray-400">Google Ads</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center text-sm text-gray-500">
+                        💡 Tip: Combine digital calendars with physical planners for the best planning experience
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(overlay);
+            
+            // Simulate generation process
+            simulateGeneration(overlay, config);
+        }
+
+        // Simulate calendar generation
+        function simulateGeneration(overlay, config) {
+            const progressBar = overlay.querySelector('.progress-fill');
+            const progressText = overlay.querySelector('#progress-text');
+            
+            const steps = [
+                { progress: 20, text: 'Loading holiday data...', delay: 1000 },
+                { progress: 40, text: 'Applying theme settings...', delay: 1500 },
+                { progress: 60, text: 'Adding your custom events...', delay: 1000 },
+                { progress: 80, text: 'Generating calendar layout...', delay: 1500 },
+                { progress: 100, text: 'Finalizing your calendar...', delay: 1000 }
+            ];
+            
+            let currentStep = 0;
+            
+            function nextStep() {
+                if (currentStep < steps.length) {
+                    const step = steps[currentStep];
+                    progressBar.style.width = step.progress + '%';
+                    progressText.textContent = step.text;
+                    
+                    setTimeout(() => {
+                        currentStep++;
+                        nextStep();
+                    }, step.delay);
+                } else {
+                    // Generation complete
+                    showDownloadOptions(overlay, config);
+                }
+            }
+            
+            nextStep();
+        }
+
+        // Show download options
+        function showDownloadOptions(overlay, config) {
+            overlay.innerHTML = `
+                <div class="loading-content">
+                    <div class="text-4xl mb-4">🎉</div>
+                    <h3 class="text-2xl font-bold mb-4">Your Calendar is Ready!</h3>
+                    <p class="text-gray-600 mb-6">Choose your preferred download format:</p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+                        <button onclick="downloadPDF()" class="bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors">
+                            📄 Download PDF
+                        </button>
+                        <button onclick="downloadExcel()" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+                            📊 Download Excel
+                        </button>
+                    </div>
+                    
+                    <!-- Affiliate recommendations -->
+                    <div class="bg-blue-50 rounded-lg p-6 max-w-md mx-auto">
+                        <h4 class="font-semibold mb-3">Continue Your Planning Journey</h4>
+                        <p class="text-sm text-gray-600 mb-4">Enhance your digital calendar with these premium planners:</p>
+                        <div class="space-y-2" id="post-download-recommendations">
+                            <!-- Recommendations will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <button onclick="closeOverlay()" class="mt-6 text-gray-500 hover:text-gray-700">
+                        Close
+                    </button>
+                </div>
+            `;
+            
+            // Load affiliate recommendations
+            if (window.affiliateTracker) {
+                window.affiliateTracker.showPostDownloadRecommendations();
+            }
+        }
+
+        // Download functions
+        function downloadPDF() {
+            // Simulate PDF download
+            console.log('Downloading PDF...');
+            // In real implementation, generate and download PDF
+            setTimeout(() => {
+                alert('PDF download started!');
+                closeOverlay();
+            }, 500);
+        }
+
+        function downloadExcel() {
+            // Simulate Excel download
+            console.log('Downloading Excel...');
+            // In real implementation, generate and download Excel file
+            setTimeout(() => {
+                alert('Excel download started!');
+                closeOverlay();
+            }, 500);
+        }
+
+        function closeOverlay() {
+            const overlay = document.querySelector('.loading-overlay');
+            if (overlay) {
+                overlay.remove();
+            }
+        }
+
+        // Form interaction handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            // Calendar type selection
+            document.querySelectorAll('input[name="calendar-type"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    // Update option styles
+                    document.querySelectorAll('.calendar-option div').forEach(div => {
+                        div.className = 'border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-primary-500 transition-colors';
+                    });
+                    
+                    this.parentElement.querySelector('div').className = 'border-2 border-primary-500 bg-primary-50 rounded-lg p-6 cursor-pointer transition-colors';
+                    
+                    // Show/hide month selector
+                    const monthSelector = document.getElementById('month-selector');
+                    monthSelector.style.display = this.value === 'month' ? 'block' : 'none';
+                    
+                    updatePreview();
+                });
+            });
+
+            // Theme selection
+            document.querySelectorAll('input[name="theme"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    document.querySelectorAll('.theme-option div').forEach(div => {
+                        div.className = 'border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-gray-400';
+                    });
+                    
+                    this.parentElement.querySelector('div').className = 'border-2 border-primary-500 rounded-lg p-4 cursor-pointer';
+                    updatePreview();
+                });
+            });
+
+            // Form change listeners
+            document.querySelectorAll('select, input[type="checkbox"]').forEach(input => {
+                input.addEventListener('change', updatePreview);
+            });
+
+            // Initialize preview
+            updatePreview();
+        });
+    </script>
+</body>
+</html>
