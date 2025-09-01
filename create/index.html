@@ -622,6 +622,9 @@
                         <button onclick="downloadExcel()" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
                             📊 Download Excel
                         </button>
+                        <button onclick="testLibraries()" class="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition-colors">
+                            🔧 Test Libraries
+                        </button>
                     </div>
                     
                     <!-- Affiliate recommendations -->
@@ -646,18 +649,35 @@
         }
 
         // Download functions
-        function downloadPDF() {
+        async function downloadPDF() {
             console.log('Generating PDF...');
             
             try {
+                // Wait for libraries to load
+                let attempts = 0;
+                while (typeof window.jspdf === 'undefined' && attempts < 50) {
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    attempts++;
+                }
+                
+                if (typeof window.jspdf === 'undefined') {
+                    throw new Error('PDF library not loaded. Please refresh the page and try again.');
+                }
+                
                 // Initialize jsPDF
                 const { jsPDF } = window.jspdf;
+                if (!jsPDF) {
+                    throw new Error('jsPDF constructor not available');
+                }
+                
                 const doc = new jsPDF();
                 
                 // Get calendar data
                 const selectedMonth = document.getElementById('month').value;
                 const selectedYear = document.getElementById('year').value;
                 const selectedTheme = document.getElementById('theme').value;
+                
+                console.log('Calendar data:', { selectedMonth, selectedYear, selectedTheme });
                 
                 // Add title
                 doc.setFontSize(20);
@@ -668,16 +688,18 @@
                 doc.text(`Theme: ${selectedTheme}`, 20, 45);
                 
                 // Generate calendar grid
-                generateCalendarPDF(doc, selectedMonth, selectedYear);
+                await generateCalendarPDF(doc, selectedMonth, selectedYear);
                 
                 // Add events if any
-                if (calendarEvents.length > 0) {
+                if (typeof calendarEvents !== 'undefined' && calendarEvents.length > 0) {
                     addEventsToPDF(doc);
                 }
                 
                 // Download the PDF
                 const fileName = `${selectedMonth}-${selectedYear}-calendar.pdf`;
                 doc.save(fileName);
+                
+                console.log('PDF saved successfully:', fileName);
                 
                 // Show success message
                 setTimeout(() => {
@@ -687,20 +709,36 @@
                 
             } catch (error) {
                 console.error('PDF generation error:', error);
-                alert('Error generating PDF. Please try again.');
+                alert(`Error generating PDF: ${error.message}\nPlease check the browser console for details.`);
             }
         }
 
-        function downloadExcel() {
+        async function downloadExcel() {
             console.log('Generating Excel...');
             
             try {
+                // Wait for libraries to load
+                let attempts = 0;
+                while (typeof XLSX === 'undefined' && attempts < 50) {
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    attempts++;
+                }
+                
+                if (typeof XLSX === 'undefined') {
+                    throw new Error('Excel library not loaded. Please refresh the page and try again.');
+                }
+                
                 // Get calendar data
                 const selectedMonth = document.getElementById('month').value;
                 const selectedYear = document.getElementById('year').value;
+                console.log('Calendar data:', { selectedMonth, selectedYear });
                 
                 // Generate calendar data
                 const calendarData = generateCalendarData(selectedMonth, selectedYear);
+                
+                if (!calendarData || calendarData.length === 0) {
+                    throw new Error('Failed to generate calendar data');
+                }
                 
                 // Create workbook
                 const wb = XLSX.utils.book_new();
@@ -710,7 +748,7 @@
                 XLSX.utils.book_append_sheet(wb, calendarWs, "Calendar");
                 
                 // Create events worksheet if events exist
-                if (calendarEvents.length > 0) {
+                if (typeof calendarEvents !== 'undefined' && calendarEvents.length > 0) {
                     const eventsData = generateEventsData();
                     const eventsWs = XLSX.utils.aoa_to_sheet(eventsData);
                     XLSX.utils.book_append_sheet(wb, eventsWs, "Events");
@@ -720,6 +758,8 @@
                 const fileName = `${selectedMonth}-${selectedYear}-calendar.xlsx`;
                 XLSX.writeFile(wb, fileName);
                 
+                console.log('Excel saved successfully:', fileName);
+                
                 // Show success message
                 setTimeout(() => {
                     alert(`Excel calendar downloaded successfully!\nFile: ${fileName}`);
@@ -728,8 +768,38 @@
                 
             } catch (error) {
                 console.error('Excel generation error:', error);
-                alert('Error generating Excel file. Please try again.');
+                alert(`Error generating Excel: ${error.message}\nPlease check the browser console for details.`);
             }
+        }
+        
+        // Test function to debug library loading
+        function testLibraries() {
+            console.log('=== Library Test ===');
+            console.log('jsPDF available:', typeof window.jspdf !== 'undefined');
+            console.log('XLSX available:', typeof XLSX !== 'undefined');
+            
+            if (window.jspdf) {
+                console.log('jsPDF version:', window.jspdf.version);
+                const { jsPDF } = window.jspdf;
+                console.log('jsPDF constructor:', typeof jsPDF);
+            }
+            
+            if (XLSX) {
+                console.log('XLSX version:', XLSX.version);
+            }
+            
+            // Test DOM elements
+            const month = document.getElementById('month');
+            const year = document.getElementById('year');
+            const theme = document.getElementById('theme');
+            
+            console.log('DOM elements:', {
+                month: month ? month.value : 'not found',
+                year: year ? year.value : 'not found',
+                theme: theme ? theme.value : 'not found'
+            });
+            
+            alert('Library test completed. Check browser console for details.');
         }
 
         // Helper function to generate calendar for PDF
